@@ -29,6 +29,36 @@ output:
 
 
 ```r
+10/(2+3)
+```
+
+```
+## [1] 2
+```
+
+
+
+```r
+10/2+3
+```
+
+```
+## [1] 8
+```
+
+
+```r
+10*2
+```
+
+```
+## [1] 20
+```
+
+This is sample text.
+
+
+```r
 #install.packages("tidyverse")
 library("tidyverse")
 ```
@@ -39,5 +69,5 @@ ggplot(mtcars, aes(x = factor(cyl))) +
     geom_bar()
 ```
 
-![](Test-RMarkdown_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Test-RMarkdown_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 

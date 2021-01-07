@@ -1,6 +1,6 @@
 ---
 title: "R, RStudio, and RMarkdown"
-date: "2021-01-05"
+date: "2021-01-07"
 output:
   html_document: 
     keep_md: yes
@@ -72,11 +72,11 @@ Order of operations applies and you don't need to add an '=' sign.
 Statistics are what R was originally written for and there are thousands of packages for specialized statistics depending on your needs.
 
 ```r
-mean(4, 6, 8, 5, 6, 7, 7, 7)
+mean(c(4, 6, 8, 5, 6, 7, 7, 7))
 ```
 
 ```
-## [1] 4
+## [1] 6.25
 ```
 
 ## RMarkdown  

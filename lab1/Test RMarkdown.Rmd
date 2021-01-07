@@ -17,6 +17,21 @@ knitr::opts_chunk$set(echo = TRUE)
 5-3*7
 ```
 
+```{r}
+10/(2+3)
+```
+
+
+```{r}
+10/2+3
+```
+
+```{r}
+10*2
+```
+
+This is sample text.
+
 ```{r message=FALSE, warning=FALSE}
 #install.packages("tidyverse")
 library("tidyverse")
