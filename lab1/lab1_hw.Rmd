@@ -23,11 +23,25 @@ R is an open source, scripting language, while RStudio is the Graphical User Int
 
 **3. Navigate to my [BIS15L](https://github.com/jmledford3115/BIS15LW2021_jledford) repository on GitHub. Notice that near the bottom there is a nice, clean description of the repository. You want this on your repository! It is built by making edits to the `README.md` file using the RMarkdown conventions. Edit your repository's `README.md` file so that you have a clean informative description, including your email address. Be creative! You don't need to just copy mine. There are lots of examples online.**  
 
+I made edits to the README.md file for my repository. 
+
 **4. Calculate the following expressions. Be sure to include each one in a separate code chunk.**  
   + 5 - 3 * 2  
   + 8 / 2 ** 2  
   
+```{r}
++ 5 - 3 * 2  
+```
+
+```{r}
+ + 8 / 2 ** 2  
+```
+
+
+  
 **5. Did any of the results in #4 surprise you? Write two programs that calculate each expression such that the result for the first example is 4 and the second example is 16.**    
+
+The result for the first calculation seemed reasonable, as the code followed the natural order of operations (PEMDAS). However, the second result was a bit surprising because I was unfamiliar with the ** expression, which I found out to simply mean "to the power of." After realizing this, the calculation was reasonable. 
 
 **6. `Objects` in R are a way in which we can store data or operations. We will talk more about objects next week. For now, make a new object `pi` as 3.14159265359 by running the following code chunk. You should now see the object `pi` in the environment window in the top right.**  
 ```{r}
