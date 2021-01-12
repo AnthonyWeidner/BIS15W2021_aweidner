@@ -411,7 +411,7 @@ summary {
 <ol style="list-style-type: decimal">
 <li>What is a vector in R?</li>
 </ol>
-<p>A vector in R is a common way of organizing data. Vectors can be created using the c command in R, which stands for concatenate.</p>
+<p>A vector in R is a common way of organizing and/or storing data. Vectors can be created using the c command in R, which stands for concatenate.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>What is a data matrix in R?</li>
 </ol>
@@ -432,7 +432,10 @@ spring_8 &lt;- c(36.80, 36.45, 33.15)</code></pre>
 <li>Build a data matrix that has the springs as rows and the columns as scientists.</li>
 </ol>
 <pre class="r"><code>spring_combinedVector &lt;- c(spring_1,spring_2,spring_3,spring_4,spring_5,spring_6,spring_7,spring_8)
-spring_matrix &lt;- matrix(spring_combinedVector,nrow=8,byrow=T)
+spring_combinedVector</code></pre>
+<pre><code>##  [1] 36.25 35.40 35.30 35.15 35.35 33.35 30.70 29.65 29.20 39.70 40.05 38.65
+## [13] 31.85 31.40 29.30 30.20 30.65 29.75 32.90 32.50 32.80 36.80 36.45 33.15</code></pre>
+<pre class="r"><code>spring_matrix &lt;- matrix(spring_combinedVector,nrow=8,byrow=T)
 spring_matrix</code></pre>
 <pre><code>##       [,1]  [,2]  [,3]
 ## [1,] 36.25 35.40 35.30
@@ -468,12 +471,52 @@ spring_matrix</code></pre>
 ## 7. Black Spring     32.90 32.50 32.80
 ## 8. Pearl Spring     36.80 36.45 33.15</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Calculate the mean temperature of all three springs.</p></li>
-<li><p>Add this as a new column in the data matrix.</p></li>
-<li><p>Show Susan’s value for Opal Spring only.</p></li>
-<li><p>Calculate the mean for Jill’s column only.</p></li>
-<li><p>Use the data matrix to perform one calculation or operation of your interest.</p></li>
+<li>Calculate the mean temperature of all three springs.</li>
 </ol>
+<pre class="r"><code>AverageTemp &lt;- rowMeans(spring_matrix)
+AverageTemp</code></pre>
+<pre><code>##  1. Bluebell Spring      2. Opal Spring 3. Riverside Spring   4. Too Hot Spring 
+##            35.65000            34.61667            29.85000            39.46667 
+##   5. Mystery Spring   6. Emerald Spring     7. Black Spring     8. Pearl Spring 
+##            30.85000            30.20000            32.73333            35.46667</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Add this as a new column in the data matrix.</li>
+</ol>
+<pre class="r"><code>spring_matrixRevised &lt;- cbind(spring_matrix,AverageTemp)
+spring_matrixRevised</code></pre>
+<pre><code>##                      Jill Steve Susan AverageTemp
+## 1. Bluebell Spring  36.25 35.40 35.30    35.65000
+## 2. Opal Spring      35.15 35.35 33.35    34.61667
+## 3. Riverside Spring 30.70 29.65 29.20    29.85000
+## 4. Too Hot Spring   39.70 40.05 38.65    39.46667
+## 5. Mystery Spring   31.85 31.40 29.30    30.85000
+## 6. Emerald Spring   30.20 30.65 29.75    30.20000
+## 7. Black Spring     32.90 32.50 32.80    32.73333
+## 8. Pearl Spring     36.80 36.45 33.15    35.46667</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Show Susan’s value for Opal Spring only.</li>
+</ol>
+<pre class="r"><code>spring_matrixRevised[2,3]</code></pre>
+<pre><code>## [1] 33.35</code></pre>
+<p>As shown above, the command gives Susan’s value for Opal Spring, which is 33.35.</p>
+<ol start="9" style="list-style-type: decimal">
+<li>Calculate the mean for Jill’s column only.</li>
+</ol>
+<pre class="r"><code>jill_data &lt;- spring_matrixRevised[,1]
+
+jill_average &lt;- mean(jill_data)
+jill_average</code></pre>
+<pre><code>## [1] 34.19375</code></pre>
+<p>As shown above, the mean for Jill’s column is 34.19375.</p>
+<ol start="10" style="list-style-type: decimal">
+<li>Use the data matrix to perform one calculation or operation of your interest.</li>
+</ol>
+<pre class="r"><code>spring_matrixRevised[1:5, 4]</code></pre>
+<pre><code>##  1. Bluebell Spring      2. Opal Spring 3. Riverside Spring   4. Too Hot Spring 
+##            35.65000            34.61667            29.85000            39.46667 
+##   5. Mystery Spring 
+##            30.85000</code></pre>
+<p>I used the above command to display the average temperatures for only the first 5 springs (Bluebell, Opal, Riverside, Too Hot, and Mystery).</p>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>

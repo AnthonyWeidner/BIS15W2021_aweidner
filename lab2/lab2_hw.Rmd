@@ -15,7 +15,7 @@ Make sure to use the formatting conventions of RMarkdown to make your report nea
 
 1. What is a vector in R?  
 
-A vector in R is a common way of organizing data. Vectors can be created using the c command in R, which stands for concatenate. 
+A vector in R is a common way of organizing and/or storing data. Vectors can be created using the c command in R, which stands for concatenate. 
 
 2. What is a data matrix in R?  
 
@@ -39,6 +39,8 @@ I ran the code chunk to generate the vectors.
 
 ```{r}
 spring_combinedVector <- c(spring_1,spring_2,spring_3,spring_4,spring_5,spring_6,spring_7,spring_8)
+spring_combinedVector
+
 spring_matrix <- matrix(spring_combinedVector,nrow=8,byrow=T)
 spring_matrix
 ```
@@ -63,13 +65,49 @@ spring_matrix
 
 6. Calculate the mean temperature of all three springs.
 
+```{r}
+AverageTemp <- rowMeans(spring_matrix)
+AverageTemp
+
+```
+
+
 7. Add this as a new column in the data matrix.  
+
+```{r}
+spring_matrixRevised <- cbind(spring_matrix,AverageTemp)
+spring_matrixRevised
+```
+
 
 8. Show Susan's value for Opal Spring only.
 
+```{r}
+spring_matrixRevised[2,3]
+
+```
+
+As shown above, the command gives Susan's value for Opal Spring, which is 33.35.
+
+
 9. Calculate the mean for Jill's column only.  
 
+```{r}
+jill_data <- spring_matrixRevised[,1]
+
+jill_average <- mean(jill_data)
+jill_average
+```
+
+As shown above, the mean for Jill's column is 34.19375.
+
 10. Use the data matrix to perform one calculation or operation of your interest.
+
+```{r}
+spring_matrixRevised[1:5, 4]
+```
+
+I used the above command to display the average temperatures for only the first 5 springs (Bluebell, Opal, Riverside, Too Hot, and Mystery). 
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.  
