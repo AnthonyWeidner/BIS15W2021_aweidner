@@ -1,7 +1,7 @@
 ---
 title: "Lab 2 Homework"
 author: "Anthony Weidner"
-date: "`r Sys.Date()`"
+date: "2021-01-12"
 output:
   html_document: 
     keep_md: yes
@@ -18,7 +18,8 @@ Make sure to use the formatting conventions of RMarkdown to make your report nea
 2. What is a data matrix in R?  
 
 3. Below are data collected by three scientists (Jill, Steve, Susan in order) measuring temperatures of eight hot springs. Run this code chunk to create the vectors.  
-```{r}
+
+```r
 spring_1 <- c(36.25, 35.40, 35.30)
 spring_2 <- c(35.15, 35.35, 33.35)
 spring_3 <- c(30.70, 29.65, 29.20)
