@@ -409,9 +409,15 @@ summary {
 <p>Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the <code>#</code> for the included code chunks to run. Be sure to add your name to the author header above.</p>
 <p>Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!</p>
 <ol style="list-style-type: decimal">
-<li><p>What is a vector in R?</p></li>
-<li><p>What is a data matrix in R?</p></li>
-<li><p>Below are data collected by three scientists (Jill, Steve, Susan in order) measuring temperatures of eight hot springs. Run this code chunk to create the vectors.</p></li>
+<li>What is a vector in R?</li>
+</ol>
+<p>A vector in R is a common way of organizing data. Vectors can be created using the c command in R, which stands for concatenate.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>What is a data matrix in R?</li>
+</ol>
+<p>A data matrix in R is a series of stacked vectors (similar to a data table). It is a great way of storing data and information, which can be used to perform certain calculations, including the sum and mean of specific columns and rows if wanted. New data matrices can be built using the matrix command.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Below are data collected by three scientists (Jill, Steve, Susan in order) measuring temperatures of eight hot springs. Run this code chunk to create the vectors.</li>
 </ol>
 <pre class="r"><code>spring_1 &lt;- c(36.25, 35.40, 35.30)
 spring_2 &lt;- c(35.15, 35.35, 33.35)
@@ -421,9 +427,47 @@ spring_5 &lt;- c(31.85, 31.40, 29.30)
 spring_6 &lt;- c(30.20, 30.65, 29.75)
 spring_7 &lt;- c(32.90, 32.50, 32.80)
 spring_8 &lt;- c(36.80, 36.45, 33.15)</code></pre>
+<p>I ran the code chunk to generate the vectors.</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Build a data matrix that has the springs as rows and the columns as scientists.</p></li>
-<li><p>The names of the springs are 1.Bluebell Spring, 2.Opal Spring, 3.Riverside Spring, 4.Too Hot Spring, 5.Mystery Spring, 6.Emerald Spring, 7.Black Spring, 8.Pearl Spring. Name the rows and columns in the data matrix. Start by making two new vectors with the names, then use <code>colnames()</code> and <code>rownames()</code> to name the columns and rows.</p></li>
+<li>Build a data matrix that has the springs as rows and the columns as scientists.</li>
+</ol>
+<pre class="r"><code>spring_combinedVector &lt;- c(spring_1,spring_2,spring_3,spring_4,spring_5,spring_6,spring_7,spring_8)
+spring_matrix &lt;- matrix(spring_combinedVector,nrow=8,byrow=T)
+spring_matrix</code></pre>
+<pre><code>##       [,1]  [,2]  [,3]
+## [1,] 36.25 35.40 35.30
+## [2,] 35.15 35.35 33.35
+## [3,] 30.70 29.65 29.20
+## [4,] 39.70 40.05 38.65
+## [5,] 31.85 31.40 29.30
+## [6,] 30.20 30.65 29.75
+## [7,] 32.90 32.50 32.80
+## [8,] 36.80 36.45 33.15</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>The names of the springs are 1.Bluebell Spring, 2.Opal Spring, 3.Riverside Spring, 4.Too Hot Spring, 5.Mystery Spring, 6.Emerald Spring, 7.Black Spring, 8.Pearl Spring. Name the rows and columns in the data matrix. Start by making two new vectors with the names, then use <code>colnames()</code> and <code>rownames()</code> to name the columns and rows.</li>
+</ol>
+<pre class="r"><code>spring_names &lt;- c(&quot;1. Bluebell Spring&quot;, &quot;2. Opal Spring&quot;, &quot;3. Riverside Spring&quot;, &quot;4. Too Hot Spring&quot;, &quot;5. Mystery Spring&quot;, &quot;6. Emerald Spring&quot;, &quot;7. Black Spring&quot;, &quot;8. Pearl Spring&quot;)
+spring_names</code></pre>
+<pre><code>## [1] &quot;1. Bluebell Spring&quot;  &quot;2. Opal Spring&quot;      &quot;3. Riverside Spring&quot;
+## [4] &quot;4. Too Hot Spring&quot;   &quot;5. Mystery Spring&quot;   &quot;6. Emerald Spring&quot;  
+## [7] &quot;7. Black Spring&quot;     &quot;8. Pearl Spring&quot;</code></pre>
+<pre class="r"><code>scientist_names &lt;- c(&quot;Jill&quot;, &quot;Steve&quot;, &quot;Susan&quot;)
+scientist_names</code></pre>
+<pre><code>## [1] &quot;Jill&quot;  &quot;Steve&quot; &quot;Susan&quot;</code></pre>
+<pre class="r"><code>colnames(spring_matrix) &lt;- scientist_names
+rownames(spring_matrix) &lt;- spring_names
+
+spring_matrix</code></pre>
+<pre><code>##                      Jill Steve Susan
+## 1. Bluebell Spring  36.25 35.40 35.30
+## 2. Opal Spring      35.15 35.35 33.35
+## 3. Riverside Spring 30.70 29.65 29.20
+## 4. Too Hot Spring   39.70 40.05 38.65
+## 5. Mystery Spring   31.85 31.40 29.30
+## 6. Emerald Spring   30.20 30.65 29.75
+## 7. Black Spring     32.90 32.50 32.80
+## 8. Pearl Spring     36.80 36.45 33.15</code></pre>
+<ol start="6" style="list-style-type: decimal">
 <li><p>Calculate the mean temperature of all three springs.</p></li>
 <li><p>Add this as a new column in the data matrix.</p></li>
 <li><p>Show Susan’s value for Opal Spring only.</p></li>

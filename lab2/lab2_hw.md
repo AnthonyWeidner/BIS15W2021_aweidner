@@ -15,7 +15,11 @@ Make sure to use the formatting conventions of RMarkdown to make your report nea
 
 1. What is a vector in R?  
 
+A vector in R is a common way of organizing data. Vectors can be created using the c command in R, which stands for concatenate. 
+
 2. What is a data matrix in R?  
+
+A data matrix in R is a series of stacked vectors (similar to a data table). It is a great way of storing data and information, which can be used to perform certain calculations, including the sum and mean of specific columns and rows if wanted. New data matrices can be built using the matrix command. 
 
 3. Below are data collected by three scientists (Jill, Steve, Susan in order) measuring temperatures of eight hot springs. Run this code chunk to create the vectors.  
 
@@ -30,9 +34,72 @@ spring_7 <- c(32.90, 32.50, 32.80)
 spring_8 <- c(36.80, 36.45, 33.15)
 ```
 
+I ran the code chunk to generate the vectors.
+
 4. Build a data matrix that has the springs as rows and the columns as scientists.  
 
+
+```r
+spring_combinedVector <- c(spring_1,spring_2,spring_3,spring_4,spring_5,spring_6,spring_7,spring_8)
+spring_matrix <- matrix(spring_combinedVector,nrow=8,byrow=T)
+spring_matrix
+```
+
+```
+##       [,1]  [,2]  [,3]
+## [1,] 36.25 35.40 35.30
+## [2,] 35.15 35.35 33.35
+## [3,] 30.70 29.65 29.20
+## [4,] 39.70 40.05 38.65
+## [5,] 31.85 31.40 29.30
+## [6,] 30.20 30.65 29.75
+## [7,] 32.90 32.50 32.80
+## [8,] 36.80 36.45 33.15
+```
+
+
 5. The names of the springs are 1.Bluebell Spring, 2.Opal Spring, 3.Riverside Spring, 4.Too Hot Spring, 5.Mystery Spring, 6.Emerald Spring, 7.Black Spring, 8.Pearl Spring. Name the rows and columns in the data matrix. Start by making two new vectors with the names, then use `colnames()` and `rownames()` to name the columns and rows.
+
+
+```r
+spring_names <- c("1. Bluebell Spring", "2. Opal Spring", "3. Riverside Spring", "4. Too Hot Spring", "5. Mystery Spring", "6. Emerald Spring", "7. Black Spring", "8. Pearl Spring")
+spring_names
+```
+
+```
+## [1] "1. Bluebell Spring"  "2. Opal Spring"      "3. Riverside Spring"
+## [4] "4. Too Hot Spring"   "5. Mystery Spring"   "6. Emerald Spring"  
+## [7] "7. Black Spring"     "8. Pearl Spring"
+```
+
+```r
+scientist_names <- c("Jill", "Steve", "Susan")
+scientist_names
+```
+
+```
+## [1] "Jill"  "Steve" "Susan"
+```
+
+```r
+colnames(spring_matrix) <- scientist_names
+rownames(spring_matrix) <- spring_names
+
+spring_matrix
+```
+
+```
+##                      Jill Steve Susan
+## 1. Bluebell Spring  36.25 35.40 35.30
+## 2. Opal Spring      35.15 35.35 33.35
+## 3. Riverside Spring 30.70 29.65 29.20
+## 4. Too Hot Spring   39.70 40.05 38.65
+## 5. Mystery Spring   31.85 31.40 29.30
+## 6. Emerald Spring   30.20 30.65 29.75
+## 7. Black Spring     32.90 32.50 32.80
+## 8. Pearl Spring     36.80 36.45 33.15
+```
+
 
 6. Calculate the mean temperature of all three springs.
 
