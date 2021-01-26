@@ -2,7 +2,8 @@
 title: "summarize practice, `count()`, `across()`"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
     toc: yes
     toc_float: yes
@@ -116,8 +117,8 @@ penguins %>%
 2. How does the mean of `bill_length_mm` compare between penguin species?
 ```{r}
 penguins %>%
-  group_by(species) %>%
-  summarize(mean_bill_length=mean(bill_length_mm,na.rm=T))
+  group_by(species) #%>%
+  #summarize(mean_bill_length=mean(bill_length_mm,na.rm=T))
 ```
 
 3. For some penguins, their sex is listed as NA. Where do these penguins occur?
