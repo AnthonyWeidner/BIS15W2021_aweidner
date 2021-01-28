@@ -1,7 +1,7 @@
 ---
 title: "Lab 6 Homework"
 author: "Anthony Weidner"
-date: "2021-01-26"
+date: "2021-01-28"
 output:
   html_document: 
     keep_md: yes
@@ -33,16 +33,14 @@ fisheries <- readr::read_csv("data/FAO_1950to2012_111914.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_character(),
 ##   `ISSCAAP group#` = col_double(),
 ##   `FAO major fishing area` = col_double()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 1. Do an exploratory analysis of the data (your choice). What are the names of the variables, what are the dimensions, are there any NA's, what are the classes of the variables?  
@@ -223,7 +221,7 @@ str(fisheries)
 ```
 
 ```
-## tibble [17,692 × 71] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## tibble [17,692 x 71] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ Country                : chr [1:17692] "Albania" "Albania" "Albania" "Albania" ...
 ##  $ Common name            : chr [1:17692] "Angelsharks, sand devils nei" "Atlantic bonito" "Barracudas nei" "Blue and red shrimp" ...
 ##  $ ISSCAAP group#         : num [1:17692] 38 36 37 45 32 37 33 45 38 57 ...
@@ -382,19 +380,19 @@ fisheries
 
 ```
 ## # A tibble: 17,692 x 71
-##    country common_name isscaap_group_n… isscaap_taxonom… asfis_species_n…
+##    country common_name isscaap_group_n~ isscaap_taxonom~ asfis_species_n~
 ##    <chr>   <chr>                  <dbl> <chr>            <chr>           
-##  1 Albania Angelshark…               38 Sharks, rays, c… 10903XXXXX      
-##  2 Albania Atlantic b…               36 Tunas, bonitos,… 1750100101      
-##  3 Albania Barracudas…               37 Miscellaneous p… 17710001XX      
-##  4 Albania Blue and r…               45 Shrimps, prawns  2280203101      
-##  5 Albania Blue whiti…               32 Cods, hakes, ha… 1480403301      
-##  6 Albania Bluefish                  37 Miscellaneous p… 1702021301      
-##  7 Albania Bogue                     33 Miscellaneous c… 1703926101      
-##  8 Albania Caramote p…               45 Shrimps, prawns  2280100117      
-##  9 Albania Catsharks,…               38 Sharks, rays, c… 10801003XX      
-## 10 Albania Common cut…               57 Squids, cuttlef… 3210200202      
-## # … with 17,682 more rows, and 66 more variables: asfis_species_name <chr>,
+##  1 Albania Angelshark~               38 Sharks, rays, c~ 10903XXXXX      
+##  2 Albania Atlantic b~               36 Tunas, bonitos,~ 1750100101      
+##  3 Albania Barracudas~               37 Miscellaneous p~ 17710001XX      
+##  4 Albania Blue and r~               45 Shrimps, prawns  2280203101      
+##  5 Albania Blue whiti~               32 Cods, hakes, ha~ 1480403301      
+##  6 Albania Bluefish                  37 Miscellaneous p~ 1702021301      
+##  7 Albania Bogue                     33 Miscellaneous c~ 1703926101      
+##  8 Albania Caramote p~               45 Shrimps, prawns  2280100117      
+##  9 Albania Catsharks,~               38 Sharks, rays, c~ 10801003XX      
+## 10 Albania Common cut~               57 Squids, cuttlef~ 3210200202      
+## # ... with 17,682 more rows, and 66 more variables: asfis_species_name <chr>,
 ## #   fao_major_fishing_area <dbl>, measure <chr>, x1950 <chr>, x1951 <chr>,
 ## #   x1952 <chr>, x1953 <chr>, x1954 <chr>, x1955 <chr>, x1956 <chr>,
 ## #   x1957 <chr>, x1958 <chr>, x1959 <chr>, x1960 <chr>, x1961 <chr>,
@@ -444,19 +442,19 @@ fisheries_tidy
 
 ```
 ## # A tibble: 376,771 x 10
-##    country common_name isscaap_group_n… isscaap_taxonom… asfis_species_n…
+##    country common_name isscaap_group_n~ isscaap_taxonom~ asfis_species_n~
 ##    <fct>   <chr>       <fct>            <chr>            <fct>           
-##  1 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  2 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  3 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  4 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  5 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  6 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  7 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  8 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  9 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-## 10 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-## # … with 376,761 more rows, and 5 more variables: asfis_species_name <chr>,
+##  1 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  2 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  3 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  4 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  5 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  6 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  7 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  8 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  9 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+## 10 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+## # ... with 376,761 more rows, and 5 more variables: asfis_species_name <chr>,
 ## #   fao_major_fishing_area <fct>, measure <chr>, year <dbl>, catch <dbl>
 ```
 
@@ -483,7 +481,7 @@ fisheries_tidy %>%
 ```
 ## # A tibble: 203 x 2
 ##    country                 n
-##    <fct>               <int>
+##  * <fct>               <int>
 ##  1 Albania               934
 ##  2 Algeria              1561
 ##  3 American Samoa        556
@@ -494,7 +492,7 @@ fisheries_tidy %>%
 ##  8 Aruba                 172
 ##  9 Australia            8183
 ## 10 Bahamas               423
-## # … with 193 more rows
+## # ... with 193 more rows
 ```
 
 There are 203 countries, and the names are displayed above.
@@ -510,19 +508,19 @@ fisheries_tidy_focused
 
 ```
 ## # A tibble: 376,771 x 6
-##    country isscaap_taxonomic_g… asfis_species_na… asfis_species_num…  year catch
+##    country isscaap_taxonomic_g~ asfis_species_na~ asfis_species_num~  year catch
 ##    <fct>   <chr>                <chr>             <fct>              <dbl> <dbl>
-##  1 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1995    NA
-##  2 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1996    53
-##  3 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1997    20
-##  4 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1998    31
-##  5 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1999    30
-##  6 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2000    30
-##  7 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2001    16
-##  8 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2002    79
-##  9 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2003     1
-## 10 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2004     4
-## # … with 376,761 more rows
+##  1 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1995    NA
+##  2 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1996    53
+##  3 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1997    20
+##  4 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1998    31
+##  5 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1999    30
+##  6 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2000    30
+##  7 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2001    16
+##  8 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2002    79
+##  9 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2003     1
+## 10 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2004     4
+## # ... with 376,761 more rows
 ```
 
 5. Based on the asfis_species_number, how many distinct fish species were caught as part of these data?
@@ -565,7 +563,7 @@ fisheries_tidy_focused %>%
 ##  8 India                          6351
 ##  9 Thailand                       6243
 ## 10 Korea, Republic of             6124
-## # … with 183 more rows
+## # ... with 183 more rows
 ```
 
 China had the largest overall catch in the year 2000.
@@ -595,7 +593,7 @@ fisheries_tidy %>%
 ##  8 Italy                         507
 ##  9 Serbia and Montenegro         478
 ## 10 Denmark                       477
-## # … with 27 more rows
+## # ... with 27 more rows
 ```
 
 Morocco caught the most sardines between the years 1990 to 2000.
@@ -662,7 +660,7 @@ fisheries_tidy %>%
 ##  8 Gadus morhua                13253
 ##  9 Thunnus alalunga            12019
 ## 10 Natantia                    11984
-## # … with 1,461 more rows
+## # ... with 1,461 more rows
 ```
 
 The species with the highest catch total is Theragra chalcogramma. 
@@ -694,7 +692,7 @@ fisheries_tidy %>%
 ##  8 Korea, Republic of            239499
 ##  9 Norway                        230317
 ## 10 Indonesia                     220354
-## # … with 189 more rows
+## # ... with 189 more rows
 ```
 
 As shown above, the country with the most catches for all species from 1970-2010 was Japan.
