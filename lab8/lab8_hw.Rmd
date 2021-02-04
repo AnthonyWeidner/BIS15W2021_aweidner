@@ -1,11 +1,11 @@
 ---
 title: "Lab 8 Homework"
-author: "Please Add Your Name Here"
+author: "Anthony Weidner"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
-    toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -36,7 +36,8 @@ This homework loosely follows the tutorial of [R Ladies Sydney](https://rladiess
 
 1. Start by loading the data `sydneybeaches`. Do some exploratory analysis to get an idea of the data structure.
 ```{r}
-do survey to partner up with people
+sydneybeaches <- readr::read_csv("data/sydneybeaches.csv")
+sydneybeaches
 ```
 
 If you want to try `here`, first notice the output when you load the `here` library. It gives you information on the current working directory. You can then use it to easily and intuitively load files.
@@ -47,34 +48,94 @@ library(here)
 The quotes show the folder structure from the root directory.
 ```{r}
 sydneybeaches <-read_csv(here("lab8", "data", "sydneybeaches.csv")) %>% janitor::clean_names()
+sydneybeaches
 ```
 
 2. Are these data "tidy" per the definitions of the tidyverse? How do you know? Are they in wide or long format?
 
+No, the data is not "tidy." Not each variable has its own column, and not each value has its own cell. Specifically, the "date" variable contains three variables (day, month, year), but these variables do not have their own columns. Additionally, each of these values (day, month, year) do not have their own cell, but are rather combined into one "date" column, with each cell entry containing the day, month, and year combined into one cell. The data is in long format. 
 
 3. We are only interested in the variables site, date, and enterococci_cfu_100ml. Make a new object focused on these variables only. Name the object `sydneybeaches_long`
+
+```{r}
+sydneybeaches_long <- sydneybeaches %>%
+  select(site,date,enterococci_cfu_100ml)
+
+sydneybeaches_long
+```
 
 
 4. Pivot the data such that the dates are column names and each beach only appears once. Name the object `sydneybeaches_wide`
 
+```{r}
+sydneybeaches_wide <- sydneybeaches_long %>%
+  pivot_wider(names_from="date", values_from = "enterococci_cfu_100ml")
+
+sydneybeaches_wide
+```
+
 
 5. Pivot the data back so that the dates are data and not column names.
+
+```{r}
+sydneybeaches_wide %>%
+  pivot_longer(-site, names_to = "date", values_to = "enterococci_cfu_100ml")
+```
+
 
 
 6. We haven't dealt much with dates yet, but separate the date into columns day, month, and year. Do this on the `sydneybeaches_long` data.
 
+```{r}
+sydneybeaches_long_split <- sydneybeaches_long %>%
+  separate(date, into= c("day", "month", "year"), sep = "/")
+
+sydneybeaches_long_split
+```
+
 
 7. What is the average `enterococci_cfu_100ml` by year for each beach. Think about which data you will use- long or wide.
+
+```{r}
+sydneybeaches_long_split_average <- sydneybeaches_long_split %>%
+  group_by(year, site) %>%
+  summarize(average_enterococci_cfu_100ml = mean(enterococci_cfu_100ml, na.rm=T))
+
+sydneybeaches_long_split_average
+
+```
 
 
 8. Make the output from question 7 easier to read by pivoting it to wide format.
 
+```{r}
+sydneybeaches_long_split_average_read <- sydneybeaches_long_split_average %>%
+  pivot_wider(names_from = "site", values_from = "average_enterococci_cfu_100ml")
+
+sydneybeaches_long_split_average_read
+```
+
+
 
 9. What was the most polluted beach in 2018?
 
+```{r}
+sydneybeaches_long_split_average %>%
+  filter(year == 2018) %>%
+  arrange(desc(average_enterococci_cfu_100ml))
+```
+
+The most polluted beach in 2018 was the South Maroubra Rockpool, with an average enterococci cfu 100ml value of 112.1875. 
 
 10. Perform one analysis of your choice on the data.
 
+```{r}
+sydneybeaches_long_split_average %>%
+  filter(year==2013) %>%
+  arrange(average_enterococci_cfu_100ml)
+```
+
+As shown above, I analyzed the data to find the least polluted beach in 2013. It turns out that Clovelly Beach is the least polluted beach in 2013, with an average enteroccoci cfu 100 ml value of 9.275862. 
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
