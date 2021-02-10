@@ -1,7 +1,7 @@
 ---
 title: "Lab 8 Homework"
 author: "Anthony Weidner"
-date: "2021-02-09"
+date: "2021-02-10"
 output:
   html_document: 
     keep_md: yes
@@ -127,15 +127,12 @@ sydneybeaches
 ## 10       25 Sydney C~ Randwick~ Clove~      151.    -33.9 25/0~                0
 ## # ... with 3,680 more rows
 ```
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
 
 2. Are these data "tidy" per the definitions of the tidyverse? How do you know? Are they in wide or long format?
 
 No, the data is not "tidy." Not each variable has its own column, and not each value has its own cell. Specifically, the "date" variable contains three variables (day, month, year), but these variables do not have their own columns. Additionally, each of these values (day, month, year) do not have their own cell, but are rather combined into one "date" column, with each cell entry containing the day, month, and year combined into one cell. The data is in long format. 
-</div>
+
 
 3. We are only interested in the variables site, date, and enterococci_cfu_100ml. Make a new object focused on these variables only. Name the object `sydneybeaches_long`
 

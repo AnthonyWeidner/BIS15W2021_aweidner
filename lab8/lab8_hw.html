@@ -11,7 +11,7 @@
 
 <meta name="author" content="Anthony Weidner" />
 
-<meta name="date" content="2021-02-09" />
+<meta name="date" content="2021-02-10" />
 
 <title>Lab 8 Homework</title>
 
@@ -191,7 +191,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 8 Homework</h1>
 <h4 class="author">Anthony Weidner</h4>
-<h4 class="date">2021-02-09</h4>
+<h4 class="date">2021-02-10</h4>
 
 </div>
 
@@ -278,15 +278,10 @@ library(janitor)</code></pre>
 ##  9       25 Sydney C~ Randwick~ Clove~      151.    -33.9 07/0~                3
 ## 10       25 Sydney C~ Randwick~ Clove~      151.    -33.9 25/0~                0
 ## # ... with 3,680 more rows</code></pre>
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class="blue">
 <ol start="2" style="list-style-type: decimal">
 <li>Are these data “tidy” per the definitions of the tidyverse? How do you know? Are they in wide or long format?</li>
 </ol>
 <p>No, the data is not “tidy.” Not each variable has its own column, and not each value has its own cell. Specifically, the “date” variable contains three variables (day, month, year), but these variables do not have their own columns. Additionally, each of these values (day, month, year) do not have their own cell, but are rather combined into one “date” column, with each cell entry containing the day, month, and year combined into one cell. The data is in long format.</p>
-</div>
 <ol start="3" style="list-style-type: decimal">
 <li>We are only interested in the variables site, date, and enterococci_cfu_100ml. Make a new object focused on these variables only. Name the object <code>sydneybeaches_long</code></li>
 </ol>
