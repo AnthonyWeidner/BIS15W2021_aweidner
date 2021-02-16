@@ -378,7 +378,7 @@ gapminder %>%
 
 ```r
 gapminder_plot1 <- gapminder%>%
-  ggplot(aes(x=gdpPercap))+
+  ggplot(aes(x=log10(gdpPercap)))+
   geom_density()
 ```
 
