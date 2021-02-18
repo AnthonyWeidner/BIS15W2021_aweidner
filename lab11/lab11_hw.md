@@ -1,7 +1,7 @@
 ---
 title: "Lab 11 Homework"
 author: "Anthony Weidner"
-date: "2021-02-16"
+date: "2021-02-17"
 output:
   html_document: 
     keep_md: yes
@@ -51,12 +51,12 @@ glimpse(gapminder)
 ```
 ## Rows: 1,704
 ## Columns: 6
-## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afghani…
-## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia,…
-## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
-## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
-## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
-## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…
+## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afgha...
+## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asi...
+## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 199...
+## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 4...
+## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372,...
+## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.113...
 ```
 
 ```r
@@ -64,7 +64,7 @@ str(gapminder)
 ```
 
 ```
-## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
+## tibble [1,704 x 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
 ##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -112,20 +112,14 @@ anyNA(gapminder)
 gapminder_summary <- gapminder %>%
   group_by(year) %>%
   summarize(mean_lifeExp = mean(lifeExp))
-```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 gapminder_summary
 ```
 
 ```
 ## # A tibble: 12 x 2
 ##     year mean_lifeExp
-##    <int>        <dbl>
+##  * <int>        <dbl>
 ##  1  1952         49.1
 ##  2  1957         51.5
 ##  3  1962         53.6
@@ -192,7 +186,7 @@ gapminder_summary <- gapminder%>%
 ```
 
 ```
-## `summarise()` regrouping output by 'year' (override with `.groups` argument)
+## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
 ```
 
 ```r
@@ -214,7 +208,7 @@ gapminder_summary
 ##  8 1957  Asia              49.3        67.8        30.3
 ##  9 1957  Europe            66.7        73.5        48.1
 ## 10 1957  Oceania           70.3        70.3        70.3
-## # … with 50 more rows
+## # ... with 50 more rows
 ```
 
 
@@ -317,7 +311,7 @@ gapminder_summary <- gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'country' (override with `.groups` argument)
+## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 ```
 
 ```r
@@ -340,7 +334,7 @@ gapminder_summary %>%
 ##  8 Nigeria       101912068
 ##  9 Mexico         78556574
 ## 10 Philippines    68638596
-## # … with 274 more rows
+## # ... with 274 more rows
 ```
 
 China, India, the United States, Indonesia, and Brazil have had the largest population growth since 1952. 
