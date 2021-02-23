@@ -24,7 +24,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -47,7 +47,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -794,3 +794,26 @@ gapminder_join%>%
 
 ![](midterm_2_files/figure-html/unnamed-chunk-26-3.png)<!-- -->
 
+
+```r
+gapminder_join%>%
+  ggplot(aes(x=log10(income_values),y=life_expectancy_values))+
+  geom_point(shape=1,na.rm=T)+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
+  labs(title = "Relationship between Income and Life Expectancy",
+       x = "Log10 Income",y="Life Expectancy") + theme_stata()
+```
+
+![](midterm_2_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+
+
+```r
+gapminder_join%>%
+  ggplot(aes(x=log10(population_values),y=life_expectancy_values))+
+  geom_point(shape=1,na.rm=T)+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
+  labs(title = "Relationship between population and Life Expectancy",
+       x = "Log10 population",y="Life Expectancy") + theme_stata()
+```
+
+![](midterm_2_files/figure-html/unnamed-chunk-28-1.png)<!-- -->

@@ -282,20 +282,3 @@ gapminder_join%>%
        x = "Year",y="Population") + theme_stata()
 ```
 
-```{r}
-gapminder_join%>%
-  ggplot(aes(x=log10(income_values),y=life_expectancy_values))+
-  geom_point(shape=1,na.rm=T)+
-  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
-  labs(title = "Relationship between Income and Life Expectancy",
-       x = "Log10 Income",y="Life Expectancy") + theme_stata()
-```
-
-```{r}
-gapminder_join%>%
-  ggplot(aes(x=log10(population_values),y=life_expectancy_values))+
-  geom_point(shape=1,na.rm=T)+
-  theme(axis.text.x = element_text(angle = 60, hjust = 1))+
-  labs(title = "Relationship between population and Life Expectancy",
-       x = "Log10 population",y="Life Expectancy") + theme_stata()
-```
