@@ -17,7 +17,6 @@ Answer the following questions and complete the exercises in RMarkdown. Please e
 
 Make sure to use the formatting conventions of RMarkdown to make your report neat and clean! Your plots should use consistent aesthetics throughout. Feel free to be creative- there are many possible solutions to these questions!  
 
-This exam is due by **12:00p on Tuesday, February 23**.  
 
 ## Load the libraries
 ```{r}
@@ -37,12 +36,19 @@ cancer_general_data <- readr::read_csv("data/GDO_data_wide.csv")
 cancer_general_data <- janitor::clean_names(cancer_general_data)
 cancer_general_data
 ```
-
 ```{r}
-cancer_general_data %>%
+cancer_summary <- cancer_general_data %>%
   group_by(tumour_type) %>%
   filter(grepl('Bladder|brain|Oral cavity|kidney',tumour_type)) %>%
-  ggplot(aes(x = tumour_type, y=incidence)) +
+  select(tumour_type,incidence) %>%
+  group_by(tumour_type) %>%
+  summarize(total_cancer = sum(incidence))
+```
+
+
+```{r}
+cancer_summary %>%
+  ggplot(aes(x = tumour_type, y=total_cancer)) +
   labs(title = "Distribution of Cancer Incidences",
        x = "Tumor Type",
        y = "Incidence")+ theme_stata()+
