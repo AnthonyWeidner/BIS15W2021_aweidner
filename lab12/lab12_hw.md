@@ -1,7 +1,7 @@
 ---
 title: "Lab 12 Homework"
 author: "Anthony Weidner"
-date: "2021-02-25"
+date: "2021-03-01"
 output:
   html_document: 
     keep_md: yes
@@ -46,7 +46,8 @@ grizzly <- read_csv(here("lab12", "data", "bear-sightings.csv"))
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   bear.id = col_double(),
 ##   longitude = col_double(),
@@ -73,7 +74,7 @@ grizzly
 ##  8     116     -147.     62.6
 ##  9     125     -157.     60.2
 ## 10     135     -156.     58.9
-## # … with 484 more rows
+## # ... with 484 more rows
 ```
 
 
@@ -84,9 +85,9 @@ glimpse(grizzly)
 ```
 ## Rows: 494
 ## Columns: 3
-## $ bear_id   <dbl> 7, 57, 69, 75, 104, 108, 115, 116, 125, 135, 137, 162, 185,…
-## $ longitude <dbl> -148.9560, -152.6228, -144.9374, -152.8485, -143.2948, -149…
-## $ latitude  <dbl> 62.65822, 58.35064, 62.38227, 59.90122, 61.07311, 62.91605,…
+## $ bear_id   <dbl> 7, 57, 69, 75, 104, 108, 115, 116, 125, 135, 137, 162, 185, ~
+## $ longitude <dbl> -148.9560, -152.6228, -144.9374, -152.8485, -143.2948, -149.~
+## $ latitude  <dbl> 62.65822, 58.35064, 62.38227, 59.90122, 61.07311, 62.91605, ~
 ```
 
 ```r
@@ -108,7 +109,7 @@ str(grizzly)
 ```
 
 ```
-## tibble [494 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## spec_tbl_df [494 x 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ bear_id  : num [1:494] 7 57 69 75 104 108 115 116 125 135 ...
 ##  $ longitude: num [1:494] -149 -153 -145 -153 -143 ...
 ##  $ latitude : num [1:494] 62.7 58.4 62.4 59.9 61.1 ...
@@ -263,7 +264,8 @@ wolves <- readr::read_csv("data/wolves_data/wolves_dataset.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_double(),
 ##   pop = col_character(),
@@ -271,10 +273,7 @@ wolves <- readr::read_csv("data/wolves_data/wolves_dataset.csv")
 ##   sex = col_character(),
 ##   color = col_character()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 ```r
@@ -282,7 +281,7 @@ str(wolves)
 ```
 
 ```
-## tibble [1,986 × 23] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## spec_tbl_df [1,986 x 23] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ pop               : chr [1:1986] "AK.PEN" "AK.PEN" "AK.PEN" "AK.PEN" ...
 ##  $ year              : num [1:1986] 2006 2006 2006 2006 2006 ...
 ##  $ age.cat           : chr [1:1986] "S" "S" "A" "S" ...
@@ -393,7 +392,7 @@ str(wolves)
 ```
 
 ```
-## tibble [1,986 × 23] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## spec_tbl_df [1,986 x 23] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ pop               : chr [1:1986] "AK.PEN" "AK.PEN" "AK.PEN" "AK.PEN" ...
 ##  $ year              : num [1:1986] 2006 2006 2006 2006 2006 ...
 ##  $ age.cat           : chr [1:1986] "S" "S" "A" "S" ...
@@ -478,7 +477,7 @@ wolves_US
 ##  8 GTNP   2013 P       M     G      43.8 -111.  10375. 3924.        34.0
 ##  9 GTNP   2013 P       M     G      43.8 -111.  10375. 3924.        34.0
 ## 10 GTNP   2013 P       F     G      43.8 -111.  10375. 3924.        34.0
-## # … with 1,159 more rows, and 13 more variables: pack.size <dbl>,
+## # ... with 1,159 more rows, and 13 more variables: pack.size <dbl>,
 ## #   standard.habitat <dbl>, standard.human <dbl>, standard.pop <dbl>,
 ## #   standard.packsize <dbl>, standard.latitude <dbl>, standard.longitude <dbl>,
 ## #   cav.binary <dbl>, cdv.binary <dbl>, cpv.binary <dbl>, chv.binary <dbl>,
