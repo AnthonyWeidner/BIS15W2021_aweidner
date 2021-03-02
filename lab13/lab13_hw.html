@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Please Add Your Name Here" />
+<meta name="author" content="Anthony Weidner" />
 
 <meta name="date" content="2021-03-02" />
 
@@ -398,7 +398,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Lab 13 Homework</h1>
-<h4 class="author">Please Add Your Name Here</h4>
+<h4 class="author">Anthony Weidner</h4>
 <h4 class="date">2021-03-02</h4>
 
 </div>
@@ -510,7 +510,7 @@ library(shinydashboard)</code></pre>
   box(title = &quot;Plot Options&quot;, width = 3,
   selectInput(&quot;x&quot;, &quot;Select Admission Detail&quot;, choices = c(&quot;Campus&quot;, &quot;Academic_Yr&quot;, &quot;Category&quot;), selected = &quot;Campus&quot;),
   hr(),
-      helpText(&quot;Data taken from UC Information Center: https://www.universityofcalifornia.edu/infocenter&quot;),
+      helpText(&quot;Data taken from UC Information Center: (https://www.universityofcalifornia.edu/infocenter)&quot;),
   ), # close the first box
   box(title= &quot;University of California Data Based on Ethnicity Distribution&quot;, width = 5,
   plotOutput(&quot;plot&quot;, width = &quot;750px&quot;, height = &quot;750px&quot;)
@@ -535,30 +535,32 @@ shinyApp(ui, server)</code></pre>
 <p><div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div></p>
 <p><strong>3. Make alternate version of your app above by tracking enrollment at a campus over all of the represented years while allowing users to interact with campus, category, and ethnicity.</strong></p>
 <pre class="r"><code>ui &lt;- dashboardPage(
-  dashboardHeader(title = &quot;Diversity of Enrollment Across UC Campuses&quot;),
+  dashboardHeader(title = &quot;Diversity Across UC Enrollment&quot;),
   dashboardSidebar(disable = T),
   dashboardBody(
   fluidRow(
   box(title = &quot;Plot Options&quot;, width = 3,
-  selectInput(&quot;x&quot;, &quot;Select Enrollment Variable&quot;, choices = c(&quot;Campus&quot;, &quot;Ethnicity&quot;, &quot;Category&quot;), selected = &quot;Campus&quot;),
-  hr(),
-      helpText(&quot;UC Information Center Reference: (https://www.universityofcalifornia.edu/infocenter)&quot;),
-  ), # close the first box
-  box(title= &quot;Enrollment Data Per UC Campus&quot;, width = 5,
-  plotOutput(&quot;plot&quot;, width = &quot;700px&quot;, height = &quot;750px&quot;)
-  ) # close the second box
-  ) # close the row
-  ) # close the dashboard body
-) # close the ui
+  selectInput(&quot;x&quot;, &quot;Select Desired Variable&quot;, choices = c(&quot;Ethnicity&quot;, &quot;Category&quot;, &quot;Campus&quot;), 
+              selected = &quot;Campus&quot;),
+      hr(),
+      helpText(&quot;Source: (https://www.universityofcalifornia.edu/infocenter). Data based on the years 2010-2019 for each UC campus.&quot;)
+  ), 
+  box(title = &quot;Academic Year&quot;, width = 6,
+  plotOutput(&quot;plot&quot;, width = &quot;600px&quot;, height = &quot;500px&quot;)
+  ) 
+  ) 
+  ) 
+)
 
 server &lt;- function(input, output, session) { 
+  
   output$plot &lt;- renderPlot({
-    UC_admit %&gt;% 
-      filter(Ethnicity!=&quot;All&quot;) %&gt;% 
-  ggplot(aes_string(x =&quot;Academic_Yr&quot;, y = &quot;FilteredCountFR&quot;, fill=input$x))+
-  geom_col(position = &quot;dodge&quot;, alpha=0.9, size=4)+
-  theme_light(base_size = 18)+ labs(x=NULL, y=&quot;Number of Admitted Students&quot;, fill=&quot;Fill Variable&quot;)
+  UC_admit %&gt;% 
+  ggplot(aes_string(x = &quot;Academic_Yr&quot;, y=&quot;FilteredCountFR&quot;,fill = input$x)) +
+  geom_col(position = &quot;dodge&quot;)+
+  theme_light(base_size = 18)
   })
+  
   session$onSessionEnded(stopApp)
   }
 

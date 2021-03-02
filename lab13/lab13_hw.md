@@ -1,6 +1,6 @@
 ---
 title: "Lab 13 Homework"
-author: "Please Add Your Name Here"
+author: "Anthony Weidner"
 date: "2021-03-02"
 output:
   html_document: 
@@ -198,7 +198,7 @@ ui <- dashboardPage(
   box(title = "Plot Options", width = 3,
   selectInput("x", "Select Admission Detail", choices = c("Campus", "Academic_Yr", "Category"), selected = "Campus"),
   hr(),
-      helpText("Data taken from UC Information Center: https://www.universityofcalifornia.edu/infocenter"),
+      helpText("Data taken from UC Information Center: (https://www.universityofcalifornia.edu/infocenter)"),
   ), # close the first box
   box(title= "University of California Data Based on Ethnicity Distribution", width = 5,
   plotOutput("plot", width = "750px", height = "750px")
@@ -231,30 +231,32 @@ shinyApp(ui, server)
 
 ```r
 ui <- dashboardPage(
-  dashboardHeader(title = "Diversity of Enrollment Across UC Campuses"),
+  dashboardHeader(title = "Diversity Across UC Enrollment"),
   dashboardSidebar(disable = T),
   dashboardBody(
   fluidRow(
   box(title = "Plot Options", width = 3,
-  selectInput("x", "Select Enrollment Variable", choices = c("Campus", "Ethnicity", "Category"), selected = "Campus"),
-  hr(),
-      helpText("UC Information Center Reference: (https://www.universityofcalifornia.edu/infocenter)"),
-  ), # close the first box
-  box(title= "Enrollment Data Per UC Campus", width = 5,
-  plotOutput("plot", width = "700px", height = "750px")
-  ) # close the second box
-  ) # close the row
-  ) # close the dashboard body
-) # close the ui
+  selectInput("x", "Select Desired Variable", choices = c("Ethnicity", "Category", "Campus"), 
+              selected = "Campus"),
+      hr(),
+      helpText("Source: (https://www.universityofcalifornia.edu/infocenter). Data based on the years 2010-2019 for each UC campus.")
+  ), 
+  box(title = "Academic Year", width = 6,
+  plotOutput("plot", width = "600px", height = "500px")
+  ) 
+  ) 
+  ) 
+)
 
 server <- function(input, output, session) { 
+  
   output$plot <- renderPlot({
-    UC_admit %>% 
-      filter(Ethnicity!="All") %>% 
-  ggplot(aes_string(x ="Academic_Yr", y = "FilteredCountFR", fill=input$x))+
-  geom_col(position = "dodge", alpha=0.9, size=4)+
-  theme_light(base_size = 18)+ labs(x=NULL, y="Number of Admitted Students", fill="Fill Variable")
+  UC_admit %>% 
+  ggplot(aes_string(x = "Academic_Yr", y="FilteredCountFR",fill = input$x)) +
+  geom_col(position = "dodge")+
+  theme_light(base_size = 18)
   })
+  
   session$onSessionEnded(stopApp)
   }
 
@@ -262,7 +264,6 @@ shinyApp(ui, server)
 ```
 
 `<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>`{=html}
-
 
 
 
