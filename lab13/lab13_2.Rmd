@@ -102,7 +102,7 @@ shinyApp(ui, server)
 ## ui Layout with `shinydashboard`  
 We now have a functional app, but the layout doesn't look very nice. We can change that with many different methods, but shiny dashboards are simple to use and offer a lot of functionality for making apps look professional quickly. First we need to install the `shinydashboard` package.  
 ```{r}
-#install.packages("shinydashboard")
+install.packages("shinydashboard")
 ```
 
 When working with any package on shiny ui appearance, it's important to know how the ui is laid out. The ui is laid out in a bootstrap grid pattern with 12 columns that can be subdivided into rows. The grid is contained in the `fluidPage()` of our current app.  
