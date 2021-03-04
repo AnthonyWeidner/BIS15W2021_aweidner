@@ -282,6 +282,8 @@ gapminder_join%>%
        x = "Year",y="Population") + theme_stata()
 ```
 
+# Nice job Anthony! Everything is very clear and clean!
+
 ```{r}
 gapminder_join%>%
   ggplot(aes(x=log10(income_values),y=life_expectancy_values))+
