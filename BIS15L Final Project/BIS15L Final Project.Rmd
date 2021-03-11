@@ -1,0 +1,115 @@
+---
+title: "Bis15L Final Project"
+author: "Anthony Weidner"
+date: "`r Sys.Date()`"
+output:
+  html_document: 
+    keep_md: yes
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your code should be organized, clean, and run free from errors. Be sure to **add your name** to the author header above. You may use any resources to answer these questions (including each other), but you may not post questions to Open Stacks or external help sites. There are 10 total questions.  
+
+Make sure to use the formatting conventions of RMarkdown to make your report neat and clean! Your plots should use consistent aesthetics throughout. Feel free to be creative- there are many possible solutions to these questions!  
+
+
+## Load the libraries
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+options(scipen=999) #disables scientific notation when printing
+library(ggthemes)
+```
+
+## Gapminder
+For this assignment, we are going to use data from  [gapminder](https://www.gapminder.org/). Gapminder includes information about economics, population, social issues, and life expectancy from countries all over the world. We will use three data sets, so please load all three.  
+
+One thing to note is that the data include years beyond 2021. These are projections based on modeling done by the gapminder organization. Start by importing the data.
+```{r}
+cancer_general_data <- readr::read_csv("data/GDO_data_wide.csv")
+cancer_general_data <- janitor::clean_names(cancer_general_data)
+cancer_general_data
+```
+```{r}
+cancer_summary <- cancer_general_data %>%
+  group_by(tumour_type) %>%
+  filter(grepl('Bladder|brain|Oral cavity|kidney',tumour_type)) %>%
+  select(tumour_type,incidence) %>%
+  group_by(tumour_type) %>%
+  summarize(total_cancer = sum(incidence))
+```
+
+
+```{r}
+cancer_summary %>%
+  ggplot(aes(x = tumour_type, y=total_cancer)) +
+  labs(title = "Distribution of Cancer Incidences",
+       x = "Tumor Type",
+       y = "Incidence")+ theme_stata()+
+  theme(axis.text.x = element_text(angle = 10, hjust = 1))+
+  geom_col()
+
+```
+
+```{r}
+cancer_specific <- cancer_general_data %>%
+  filter(tumour_type=="Bladder" & tumour_type_2!="All" & tumour_type_3!="All") %>%
+  group_by(stage) %>%
+  summarize(tumour_type, tumour_type_2, tumour_type_3, stage, incidence, incidence_rate) %>%
+  arrange(desc(incidence_rate))
+
+cancer_specific
+```
+
+```{r}
+cancer_specific %>%
+  group_by(stage) %>%
+  ggplot(aes(x = stage, y=incidence)) +
+  labs(title = "Distribution of Cancer Incidences",
+       x = "Tumor Type",
+       y = "Incidence")+ theme_stata()+
+  theme(axis.text.x = element_text(angle = 10, hjust = 1))+
+  geom_col()
+
+```
+
+```{r}
+cancer_general_data %>%
+  filter(tumour_type=="Bladder") %>%
+  ggplot(aes(x=year,y=incidence,group=stage, color = stage))+
+  geom_line()+
+  geom_point(shape=5)+
+  scale_x_discrete(breaks=c(2013,2014,2015,2016,2017,2017))+
+  labs(title = "Incidences of Bladder Cancer based on stage",
+       x = "Year",y="Incidence") + theme_stata()
+```
+
+```{r}
+cancer_general_data %>%
+  filter(tumour_type=="Oral cavity") %>%
+  ggplot(aes(x=year,y=incidence,group=stage, color = stage))+
+  geom_line()+
+  geom_point(shape=5)+
+  scale_x_discrete(breaks=c(2013,2014,2015,2016,2017,2017))+
+  labs(title = "Oral Cavity Cancer based on Stage",
+       x = "Year",y="Incidence") + theme_stata()
+```
+
+
+```{r}
+cancer_general_data %>%
+  filter(tumour_type=="Malignant kidney cancer") %>%
+  ggplot(aes(x=year,y=incidence,group=stage, color = stage))+
+  geom_line()+
+  geom_point(shape=5)+
+  scale_x_discrete(breaks=c(2013,2014,2015,2016,2017,2017))+
+  labs(title = "Malignant Kidney Cancer Distribution",
+       x = "Year",y="Incidence") + theme_stata()
+```
+
